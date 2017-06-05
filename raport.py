@@ -1,4 +1,4 @@
-import test12
+#import test12
 from datetime import datetime
 import time
 import random
@@ -6,8 +6,8 @@ import random
 time_sm = datetime.strftime(datetime.now(), "%d.%m.%Y")
 #file = open('\\text\\Python_Project\\Raport_project\\test.txt', 'w')
 
-master_list = ['Гнатюк Д.А', 'Подручный А.Н.', 'Купчишин Е.Е']
-control_list = ['Камеристова', 'Захарова', 'Короткова', 'Погожина']
+master_list = ['Генаток Д.А', 'Петров А.Н.', 'Курочкин Е.Е']
+control_list = ['Камнева', 'Рахунова', 'Иванова', 'Погожина']
 
 
 def view_list(list):
@@ -133,7 +133,7 @@ def for_testing_view():
     print(x1)
     
     
-print(test12.imeg)
+#print(test12.imeg)
 
     
 
