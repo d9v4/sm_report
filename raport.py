@@ -7,7 +7,7 @@ time_sm = datetime.strftime(datetime.now(), "%d.%m.%Y")
 #file = open('\\text\\Python_Project\\Raport_project\\test.txt', 'w')
 
 master_list = ['Генаток Д.А', 'Петров А.Н.', 'Курочкин Е.Е']
-control_list = ['Камнева', 'Рахунова', 'Иванова', 'Погожина']
+control_list = ['Камнева', 'Рахунова', 'Иванова', 'Огожина']
 
 
 def view_list(list):
