@@ -11,6 +11,12 @@ def fileToTuple(path):
     f.close()
     return st.split(';')
     
+def tupleToFile(tuple, path):
+    f = open(path, 'w')
+    for a in tuple:
+        f.write(a + ';')
+    f.close()
+    
 if __name__ == "__main__":
     print(fileToDict('config\speed_of_size.ini'))
     input()
