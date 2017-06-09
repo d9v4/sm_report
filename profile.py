@@ -1,41 +1,70 @@
 # -*- coding: utf-8 -*- 
 
-import fileio as iof
 from view_cons import prtup as prt
 
 class profile:
-    def __init__(self):
-        self.masters = iof.fileToTuple('config\\masters.ini')                 # загружаем 
-        self.controls = iof.fileToTuple('config\\controls.ini')                    # значения 
-        self.prof = iof.fileToTuple('config\\profile.ini')                             # из файлов
-        self.list = []
-        for a in self.prof:
-            r = a.split(',')
-            sm = r[0]
-            m = int(r[1])
-            c = int(r[2]) 
-            st = sm + ' ' + self.masters[m] + ' ' + self.controls[c]
-            self.list.append(st)
+    st = 'none'
+    flag = False
+    path = 'config\\profile.ini'
     
-    def get_m(self):
-        return self.list
+    def __init__(self, path = self.path):              
+        self.prof = self.fileToList(self.path)                 
+        print(self.st)
+    
+    def fileToList(self, path):
+        f = open(path, 'r')
+        st = f.read()
+        st = st[:-1]
+        f.close()
+        return list(st.split(';'))
+    
+    def listToFile(self, plist, path):
+        f = open(path, 'w')
+        for a in plist:
+            f.write(a + ';')
+        f.close()
     
     def set_value(self, value):
         if value >= len(self.prof) or value < 0:                    # здесь устанавливаем 
             return -1                                        # какой профиль используется
         else:                                           # проверка что бы не выйти за границу кортежа с профилями
             self.value = value
+            self.st = self.prof[value]
+            self.flag = True
+            
+    def set_str(self, st):
+        self.st = st
     
-    def get_value(self):                                # отдать значение 
-        if hasattr(self, 'value'):                  # проверить 
-            return self.value                   # существует ли
+    def get_str(self):
+        return self.st
+    
+    def get_list(self):
+        return self.prof
+    
+    def save(self):
+        if self.flag == True:
+            self.prof[self.value] = self.st
+            self.listToFile(self.prof, self.path)
+            
+    def set_path(self, path)
+        if type(path) == str:
+            self.path = path  
         else:
             return -1
-        
+
+            
 if __name__ == "__main__":
     
+    
     l = profile()
-    prt(l.get_m())
+    
+    print(l.get_list())
+    l.set_value(1)
+    print(l.get_str())
+    l.set_str('jjjjjjdsss')
+    print(l.get_str())
+    l.save()
+    #prt(l.get_m())
     #print(t)
     #l.set_value(50)
     #print(l.get_value())
