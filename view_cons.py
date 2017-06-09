@@ -1,3 +1,3 @@
 def prtup(tuple):
-        for a in tuple:
-            print(a)
+        for a in range(len(tuple)):
+            print(a, tuple[a])
