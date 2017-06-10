@@ -2,6 +2,13 @@
 
 from view_cons import prtup as prt
 
+ch = '''
+c - изменить
+s - сохранить
+d - удалить
+a - добавить
+'''
+
 class profile:
     st = 'none'                                                 # значение строки профиля по умолчанию 
     flag = False                                                # флаг для проверки существует ли value
@@ -71,11 +78,32 @@ class profile:
             self.prof.pop([value])
            
 if __name__ == "__main__":
-    
-    
     l = profile()
-    prt(l.get_list())
-    l.set_value(int(input('номер профиля - ')))
-    print(l.get_str())
     
+    flag = False
+    while True:
+        print('Выберите профиль:')
+        prt(l.get_list())                       # добавить сюда условие выбора профиля
+        l.set_value(int(input('номер профиля - ')))
+        print(l.get_str())
+        re = input('1 - выбрать другой, 2 - редактировать, enter - продолжить\n')
+        if re == '1':
+            pass
+        elif re == '2':
+            while True:
+                print(l.get_str())
+                p = input(ch)
+                if p == 'c':            # изменить строку
+                    print('изменить строку')
+                elif p == 's':          # сохранить изменения
+                    print('сохранить изменения')
+                elif p == 'd':          # удалить запись
+                    print('удалить запись')
+                elif p == 'a':          # добавить новой записью
+                    print('добавить запись')
+                else:
+                    break
+        else:
+            break
+    print('работа основной программы')
     input()
