@@ -79,8 +79,13 @@ class profile:
            
 if __name__ == "__main__":
     l = profile()
-    
+    def prof_str():
+        master = input('мастер ')
+        control = input('контролер ')
+        team = input('смена ')
+        return master +' '+ control +' '+ team
     flag = False
+    
     while True:
         print('Выберите профиль:')
         prt(l.get_list())                       # добавить сюда условие выбора профиля
